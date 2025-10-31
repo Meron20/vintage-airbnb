@@ -1,0 +1,22 @@
+# === General ===
+.DS_Store
+.env
+node_modules
+dist
+build
+coverage
+*.log
+
+# === Frontend ===
+frontend/node_modules
+frontend/dist
+frontend/.env
+
+# === Backend ===
+backend/node_modules
+backend/.env
+
+# === Editor files ===
+.vscode/
+.idea/
+*.swp
