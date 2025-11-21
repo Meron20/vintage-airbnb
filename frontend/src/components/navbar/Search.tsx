@@ -22,8 +22,9 @@ const Search = ({ handleSearch}: Props) => {
   return (
         <form
           onSubmit={ onSubmit}
-          className='flex gap-4 bg-charcoal p-4 rounded-full text-bodyText px-4'
+          className='flex flex-col sm:flex-row sm:flex-wrap gap-2 sm:gap-4 bg-charcoal p-4 rounded-full text-bodyText'
         >
+       
           <input 
              type="text" 
              placeholder='Where'
@@ -31,7 +32,7 @@ const Search = ({ handleSearch}: Props) => {
              onChange={(ev) => setPlace(ev.target.value)}
              className='bg-beige p-2 rounded-full text-charcoal'
             />
-
+  
           <input
               type="date"
               value={from}
@@ -55,7 +56,9 @@ const Search = ({ handleSearch}: Props) => {
             <button className='bg-gold text-charcoal px-4 rounded-full font-semibold'>
               Search
             </button>
+        
         </form>
+   
  )
 
 }

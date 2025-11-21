@@ -1,73 +1,84 @@
-# React + TypeScript + Vite
+# [Project Name]
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fullstack web application for searching, viewing and booking accommodations.
 
-Currently, two official plugins are available:
+## 📦 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Frontend
+- React + Vite
+- React Router
+- Tailwind CSS
+- Axios
+- React state / Context
 
-## React Compiler
+### Backend
+- Node.js + Express
+- MongoDB + Mongoose
+- JWT Authentication
+- Bcrypt
+- dotenv
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 🚀 Install & Run
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Backend
+cd backend
+npm install
+npm run dev
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Create a `.env` file based on `.env.example`.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Frontend
+cd frontend
+npm install
+npm run dev
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 🔗 API Endpoints
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Listings
+GET /listings  
+GET /listings/:id  
+POST /listings  
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Bookings
+POST /bookings  
+GET /bookings/me  
+
+### Auth
+POST /auth/register  
+POST /auth/login  
+
+---
+
+## 🧪 Manual Tests
+
+- Register user → works  
+- Login user → token saved  
+- Search listings → returns filtered results  
+- View detail page → correct data  
+- Create booking → booking saved  
+- View "my bookings" → shows correct bookings  
+- Responsive layout mobile  
+- Navigation works  
+
+---
+
+## 📄 Documentation
+See `/docs/technical-documentation.pdf` or Word file.
+
+## 🧪 Manuella tester (Manual tests)
+
+✔ Register user  
+✔ Login user  
+✔ Token saved 
+✔ Fetch all listings  
+✔ Search by place  
+✔ Search by guests  
+✔ Open detail page  
+✔ Create booking  
+✔ Booking visible under "My bookings"  
+✔ Responsive layout mobile  
+✔ Navigation works  

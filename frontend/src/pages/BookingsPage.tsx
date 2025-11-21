@@ -17,6 +17,7 @@ type Place = {
   checkOut: number | null;
   maxGuests: number | null;
   price: number | null;
+ 
 };
 
 
@@ -27,7 +28,8 @@ type Booking = {
   name: string;
   phone: string;
   price: number;
-  place: Place;
+  numberOfGuests: number;
+  place: Place | null;
 }
 
 
@@ -41,17 +43,42 @@ const BookingsPage = () => {
       });
 
   }, []);
+
+  if(bookings.length === 0) {
+    return(
+      <div>
+        <AccountNav/>
+        <p className="text-center text-gold mt-8">No bookings yet.</p>
+      </div>
+    )
+  }
   return (
     <div>
       <AccountNav/>
-      <div>
-        {bookings?.length > 0 && bookings.map(booking => (
-          <Link to={`/account/bookings/${booking._id}`} className="flex gap-4 bg-charcoal rounded-2xl overflow-hidden mt-8  text-bodyText opacity-70">
+      <div className="mt-6 space-y-6"> 
+       {bookings.map((booking) => {
+          const nights = booking.checkIn && booking.checkOut
+            ? differenceInCalendarDays(new Date(booking.checkOut), new Date(booking.checkIn))
+            : 0;
+
+          return (
+        
+
+          <Link 
+             key={booking._id}
+             to={`/account/bookings/${booking._id}`} 
+             className="flex gap-4 bg-charcoal rounded-2xl overflow-hidden mt-8  text-bodyText opacity-70"
+             >
+        {booking.place ? (
+
+          <>
             <div className="w-48">
               <PlaceImg place={booking.place}/>
             </div>
+
             <div className="py-4">
                <h2 className="text-xl mb-4">{booking.place.title}</h2>
+
                <div className="mt-2 flex gap-2">
                 
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -69,12 +96,18 @@ const BookingsPage = () => {
 
                </div>
                <div className="mt-2 text-xl">
-                  {differenceInCalendarDays(new Date(booking.checkOut), new Date(booking.checkIn))} nights 
-                 | Total price: ${booking.price}
+                   {nights} nights | Total price: ${booking.price}
                </div>
             </div>
+          </>
+        ):(
+          <div className='p-4 text-gold'>
+            Place deleted or not available
+          </div>
+          )}
           </Link>
-        ))}
+          );
+        })}
       </div>
     </div>
   )
