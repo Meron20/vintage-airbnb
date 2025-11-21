@@ -17,3 +17,7 @@ body {
   color: var(--color-bodyText);
   font-family: var(--font-body);
 }
+textarea {
+
+  @apply w-full border my-1 py-2 px-4 rounded-lg;
+}

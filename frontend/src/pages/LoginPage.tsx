@@ -17,7 +17,7 @@ const LoginPage: React.FC = () => {
         e.preventDefault();
 
         try{
-            const {data} = await axios.post("http://127.0.0.1:4000/login", {email, password}, { withCredentials: true })
+            const {data} = await axios.post("http://localhost:4000/login", {email, password}, { withCredentials: true })
             setUser(data);
             alert('Login successful')
             navigate('/account')

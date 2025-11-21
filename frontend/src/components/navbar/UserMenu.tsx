@@ -33,15 +33,15 @@ function UserMenu() {
    };
 
   return (
-    <div className='relative'>
-      <div className='flex flex-row items-center gap-3'>
+    <div className='relative  '>
+      <div className=' flex flex-row items-center gap-3'>
 
         {user ? ( 
           <div
             onClick={() => handleNavigate("/account")}
-            className="hidden md:block text-sm font-semibold py-2 px-4 rounded-full bg-gold cursor-pointer hover:opacity-90 transition"
+            className="hidden md:block text-sm font-semibold py-2 px-4 rounded-full bg-gold text-charcoal cursor-pointer hover:opacity-90 transition"
           >
-            {user.name}
+              {user.name}
          </div> 
 
         ): (
@@ -65,7 +65,13 @@ function UserMenu() {
            {user ? (
               <>
                 <MenuItem onClick={() => handleNavigate("/account")}label="My Account"/>
-                <MenuItem onClick={() => {logout(); navigate("/"); }}  label="Logout"/>  
+                <MenuItem
+                  onClick= { async () => { 
+                    logout(); 
+                    setIsOpen(false)
+                    navigate("/"); 
+                }}  
+                label="Logout"/>  
               </>
             ) : (
 

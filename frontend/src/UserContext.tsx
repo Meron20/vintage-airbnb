@@ -28,8 +28,9 @@ export const UserContextProvider: React.FC<{children: React.ReactNode}> = ({ chi
   const [ready,setReady]= useState(false)
 
   const logout = async() => {
-    await axios.post('/logout')
+    await axios.post('/logout', {}, {withCredentials: true})
     setUser(null);
+    
    
   };
   useEffect(() => {

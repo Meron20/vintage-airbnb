@@ -1,49 +1,63 @@
-import { BiSearch } from 'react-icons/bi';
+import {  useState } from 'react';
 
-const Search = () => {
+type Props = {
+  handleSearch: (place: string, from: string, to: string, guests: string, ) => void;
+}
+
+const Search = ({ handleSearch}: Props) => {
+  
+  const [place, setPlace] = useState("");
+  const [from, setFrom] = useState("");
+  const [to, setTo] = useState("");
+  const [guests, setGuests] = useState("")
+
+
+
+  function onSubmit(ev: React.FormEvent<HTMLFormElement>) {
+    ev.preventDefault();
+    handleSearch(place, from, to, guests);
+  }
+
+ 
   return (
-    <div className='
-       
-        border-transparent
-        hover:border-beige
-        w-full 
-        md:w-auto
-        py-2
-        rounded-full
-        transition
-        cursor-pointer
-        bg-charcoal
-        
-    '
-    >
-        <div className='flex flex-row items-center justify-between'>
-            <div className='text-sm text-beige px-6 hidden sm:block flex-1 text-center'>
-               Where
-            </div>
-            <div  className='text-sm text-beige px-6 hidden sm:block flex-1 text-center' >
-              When 
-            </div>
-            <div  className='text-sm text-beige px-6 hidden sm:block flex-1 text-center' >
-              Era
-            </div>
-            <div  className='text-sm text-beige px-6 hidden sm:block flex-1 text-center' >
-              Who
-            </div>
-            <div  className='p-2 mx-2 bg-gold  sm:flex text-black rounded-full flex flex-row items-center justify-between  gap-3 ' >
-               <span>  Search  </span>
-               <BiSearch  size={18}/>
-            </div>
-            <div className='flex sm:hidden flex-row items-center gap-2 px-3'>
-              <div className='p-2 bg-gold text-black rounded-full flex items-center justify-center'>
-                <BiSearch size={18} />
-              </div>
-              <span className='text-gray-400 text-sm ml-2 '>
-                 Start search
-              </span>
-            </div>
-        </div>
-    </div>
-  )
+        <form
+          onSubmit={ onSubmit}
+          className='flex gap-4 bg-charcoal p-4 rounded-full text-bodyText px-4'
+        >
+          <input 
+             type="text" 
+             placeholder='Where'
+             value={place}
+             onChange={(ev) => setPlace(ev.target.value)}
+             className='bg-beige p-2 rounded-full text-charcoal'
+            />
+
+          <input
+              type="date"
+              value={from}
+              onChange={(ev) => setFrom(ev.target.value)}
+              className="bg-beige p-2 rounded-full text-charcoal"
+            />
+          <input
+              type="date"
+              value={from}
+              onChange={(ev) => setTo(ev.target.value)}
+              className="bg-beige p-2 rounded-full text-charcoal"
+            />
+          <input
+              type="number"
+              min='1'
+              placeholder='Guests'
+              value={guests}
+              onChange={(ev) => setGuests(ev.target.value)}
+              className="bg-beige p-2 rounded-full text-charcoal"
+            />
+            <button className='bg-gold text-charcoal px-4 rounded-full font-semibold'>
+              Search
+            </button>
+        </form>
+ )
+
 }
 
 export default Search

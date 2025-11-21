@@ -1,0 +1,43 @@
+/* Calendar background */
+.react-datepicker {
+    background-color: #1e1e1e !important; /* charcoal */
+    border: 1px solid #d4af37 !important; /* gold border */
+  }
+  
+  /* Calendar header background */
+  .react-datepicker__header {
+    background-color: #1e1e1e !important;
+    border-bottom: 1px solid #d4af37 !important;
+  }
+  
+  /* Month title & days of week */
+  .react-datepicker__current-month,
+  .react-datepicker__day-name {
+    color: #d4af37 !important; /* gold */
+    font-weight: bold;
+  }
+  
+  /* Day numbers */
+  .react-datepicker__day {
+    color: #d4af37 !important; /* gold numbers */
+  }
+  
+  /* Hover effect */
+  .react-datepicker__day:hover {
+    background-color: #d4af37 !important;
+    color: #1e1e1e !important; /* charcoal text */
+    border-radius: 6px;
+  }
+  
+  /* Selected day */
+  .react-datepicker__day--selected {
+    background-color: #d4af37 !important;
+    color: #1e1e1e !important; /* charcoal text */
+    border-radius: 6px;
+  }
+  
+  /* Today's date */
+  .react-datepicker__day--today {
+    border: 1px solid #d4af37 !important;
+  }
+  
